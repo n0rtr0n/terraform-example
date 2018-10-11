@@ -22,5 +22,5 @@ module "asg" {
   DESIRED_CAPACITY = 3
 
   # installs Docker and echo image to demonstrate LB in multi-AZ
-  USER_DATA = "#!/bin/bash\nsudo yum update -y && sudo yum install -y docker && sudo usermod -aG docker ec2-user && sudo service docker start && docker run -d -p 80:80 nginx"
+  USER_DATA = "${data.template_file.user_data.rendered}"
 }

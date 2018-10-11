@@ -7,8 +7,19 @@ locals {
                             map(
                                 "port", 80,
                                 "protocol", "HTTP",
-                            ),
-  )}"
+                            )
+                          )
+                        }"
+
+  HTTPS_LISTENERS = "${list(
+                        map(
+                            "certificate_arn", "${aws_acm_certificate.cert.arn}",
+                            "port", 443
+                        )
+                      )
+                    }"
+
+  HTTPS_LISTENERS_COUNT = 1
 
   AZS = {
     us-east-1 = ["us-east-1a", "us-east-1b", "us-east-1c"]

@@ -11,6 +11,8 @@ module "alb" {
   VPC_ID                   = "${module.vpc.vpc_id}"
   HTTP_TCP_LISTENERS       = "${local.HTTP_TCP_LISTENERS}"
   HTTP_TCP_LISTENERS_COUNT = "${local.HTTP_TCP_LISTENERS_COUNT}"
+  HTTPS_LISTENERS          = "${local.HTTPS_LISTENERS}"
+  HTTPS_LISTENERS_COUNT    = "${local.HTTPS_LISTENERS_COUNT}"
   TARGET_GROUPS            = "${local.TARGET_GROUPS}"
   TARGET_GROUPS_COUNT      = "${local.TARGET_GROUPS_COUNT}"
 

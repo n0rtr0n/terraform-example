@@ -98,6 +98,16 @@ When you develop a plan, the secrets, variables, etc, are all saved directly in 
 
 In lieu of using AWS credentials directly, use an AWS profile to avoid the credentials being stored directly in the repository
 
+## Importing Existing Resources
+
+Some resources, such as existing RDS instances and DNS hosted zones, you may not want to recreate.  You'll want to import them *before* creating a plan for the resources you utilize in Terraform.  In order to avoid duplication or potential destruction of existing resources, you can import these individually while retaining the benefit of having IaC, as such: 
+
+```
+terraform import -var-file=secret.tfvars aws_route53_zone.this <zone_id>
+```
+
+See the [Terraform import docs](https://www.terraform.io/docs/import/usage.html) for more details on usage.
+
 ## Best Practices
 
 * Ensure every resource created by TF has a tag Terraform = true and Environment = ${var.ENVIRONMENT}
@@ -113,6 +123,7 @@ In lieu of using AWS credentials directly, use an AWS profile to avoid the crede
 ## Limitations / workarounds
 
 * Terraform backend configuration cannot contain interpolation.  Additional parameters to backend configuration may be passed in when running `terraform init` as such:
+* Route 53 hosted zones *may* need to be manually imported.   The reason for this is that hosted zones create a new set of NS records, and if you're using AWS Registered Domains, there is not yet any custom resource to update the nameservers on the domain to point to these records. 
 
 ```
 $ terraform init -backend-config="profile=name_of_aws_profile" 

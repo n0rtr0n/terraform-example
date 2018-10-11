@@ -1,3 +1,6 @@
+
+
+
 resource "aws_s3_bucket" "state_bucket" {
   bucket = "${var.STATE_BUCKET_NAME}"
   region = "${var.AWS_REGION}"
@@ -10,6 +13,14 @@ resource "aws_s3_bucket" "state_bucket" {
     Name        = "S3 Remote Terraform State Store"
     Terraform   = "true"
     Environment = "${var.ENVIRONMENT}"
+  }
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm     = "AES256"
+      }
+    }
   }
 
   lifecycle {

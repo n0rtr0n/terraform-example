@@ -29,3 +29,7 @@ data "aws_iam_policy_document" "bucket_policy" {
     }
   }
 }
+
+data "template_file" "user_data" {
+  template = "${file("scripts/init.sh")}"
+}

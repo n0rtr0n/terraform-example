@@ -20,6 +20,12 @@ variable HTTP_TCP_LISTENERS {
 
 variable HTTP_TCP_LISTENERS_COUNT {}
 
+variable HTTPS_LISTENERS {
+  type = "list"
+}
+
+variable HTTPS_LISTENERS_COUNT {}
+
 variable TARGET_GROUPS {
   type = "list"
 }

@@ -3,6 +3,8 @@ variable AWS_REGION {
 }
 
 variable AWS_PROFILE {}
+variable APEX_DOMAIN_NAME {}
+variable ENVIRONMENT_DOMAIN_NAME {}
 variable ENVIRONMENT {}
 variable LOG_BUCKET_NAME {}
 variable LOG_LOCATION_PREFIX {}

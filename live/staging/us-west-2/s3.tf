@@ -7,6 +7,8 @@ resource "aws_s3_bucket" "log_bucket" {
     Environment = "${var.ENVIRONMENT}"
   }
 
+  force_destroy = true # turn this off for production!!!
+
   //  lifecycle {
   //    prevent_destroy = true
   //  }

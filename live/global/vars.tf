@@ -13,4 +13,4 @@ variable "AMIS" {
   }
 }
 
-variable "DOMAIN_NAME" {}
+variable "APEX_DOMAIN_NAME" {}

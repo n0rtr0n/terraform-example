@@ -18,10 +18,10 @@ module "web-security-group" {
 
   ingress_with_cidr_blocks = [
     {
-      from_port   = 8080
-      to_port     = 8080
+      from_port   = 443
+      to_port     = 443
       protocol    = "tcp"
-      description = "HTTP Ports 8080"
+      description = "HTTPS Port"
       cidr_blocks = "0.0.0.0/0"
     },
   ]
