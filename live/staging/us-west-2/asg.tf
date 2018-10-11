@@ -6,7 +6,7 @@ module "asg" {
 
   # Launch configuration
   LAUNCH_CONFIGURATION_NAME = "${var.ENVIRONMENT}-lc"
-  ASG_AMI                   = "${lookup(local.ASG_AMIS, var.AWS_REGION)}"
+  ASG_AMI                   = "${aws_ami_copy.encrypted.id}"
   EC2_INSTANCE_TYPE         = "t2.medium"
   SECURITY_GROUPS           = ["${module.instance-security-group.this_security_group_id}"]
   KEY_NAME                  = "${aws_key_pair.staging-asg-key.key_name}"
